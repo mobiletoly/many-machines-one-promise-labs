@@ -1,0 +1,44 @@
+{
+  "visibility_contracts": [
+    {
+      "id": "C-V1",
+      "kind": "read_your_writes",
+      "scope": "session:J-17:profile:P-17:preferred_pickup",
+      "session_id": "J-17",
+      "target_read_id": "R-1"
+    },
+    {
+      "id": "C-V2",
+      "kind": "monotonic_reads",
+      "scope": "session:J-88:feed:F-88:active-notices",
+      "session_id": "J-88",
+      "target_read_id": "R-2B"
+    },
+    {
+      "id": "C-V3",
+      "kind": "monotonic_reads",
+      "scope": "session:J-89:feed:F-89:active-notices",
+      "session_id": "J-89",
+      "target_read_id": "R-3B"
+    },
+    {
+      "id": "C-V4",
+      "kind": "dependent_observation",
+      "scope": "activity:I-42:accepted-reservation",
+      "target_read_id": "D",
+      "exposed_operation_id": "Y",
+      "acceptance_predicate_id": "P-Y-VERSION",
+      "required_input_role": "selected_event_version"
+    }
+  ],
+  "object_contracts": [
+    {
+      "id": "C-O1",
+      "object_id": "P-42",
+      "initial_value": "Jess",
+      "set_operation": "set_display_name",
+      "get_operation": "get_display_name",
+      "set_result": "saved"
+    }
+  ]
+}

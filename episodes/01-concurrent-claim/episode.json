@@ -1,0 +1,38 @@
+{
+  "number": 1,
+  "id": "concurrent-claim",
+  "title": "Two Workers Claim Order 42",
+  "concepts": [
+    "race-condition",
+    "atomic-operation",
+    "guarantee-boundary"
+  ],
+  "recommendedAfterChapter": 2,
+  "states": {
+    "start": "episodes/01-concurrent-claim/start",
+    "solution": "episodes/01-concurrent-claim/solution"
+  },
+  "commands": {
+    "happyPath": {
+      "run": "GOWORK=off go test -count=1 ./episodes/01-concurrent-claim/start -run '^TestOneWorkerClaimsOrder$'",
+      "expectedExit": 0
+    },
+    "failure": {
+      "run": "GOWORK=off go test -count=1 -tags=failure ./episodes/01-concurrent-claim/start -run '^TestTwoWorkersClaimOrder42$'",
+      "expectedExit": 1,
+      "expectedOutput": "property violated: successful_claims(order=42) = 2, want <= 1"
+    },
+    "solution": {
+      "run": "GOWORK=off go test -count=1 -tags=failure ./episodes/01-concurrent-claim/solution -run '^TestTwoWorkersClaimOrder42$'",
+      "expectedExit": 0
+    },
+    "boundary": {
+      "run": "GOWORK=off go test -count=1 ./episodes/01-concurrent-claim/solution -run '^TestBoundaryClaimCanStrandOrder$'",
+      "expectedExit": 0
+    },
+    "verify": {
+      "run": "./scripts/verify-episode-01.sh",
+      "expectedExit": 0
+    }
+  }
+}

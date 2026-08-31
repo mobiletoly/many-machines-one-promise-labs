@@ -1,0 +1,42 @@
+{
+  "capability": {
+    "id": "A-94-CAMPAIGN-QUERY",
+    "required_result_meaning": "suppressed",
+    "eligible_path_ids": ["P-CAMPAIGN"],
+    "build_interpretations": [
+      {
+        "build_id": "V1",
+        "status_code": 2,
+        "meaning": "active"
+      },
+      {
+        "build_id": "V2",
+        "status_code": 2,
+        "meaning": "suppressed"
+      }
+    ]
+  },
+  "disruption": {
+    "at": "2026-08-30T12:00:00Z",
+    "rpo_seconds": 30,
+    "rto_seconds": 300
+  },
+  "accepted_history_authority": {
+    "id": "A-94-ACCEPTANCE-LEDGER",
+    "complete_through_disruption": true,
+    "order_field": "position"
+  },
+  "recovery_evidence_authority": {
+    "id": "A-94-RECOVERY-REVIEW",
+    "complete_membership_by_state": true
+  },
+  "serving_evidence_authority": {
+    "id": "A-94-CAPABILITY-READINESS",
+    "capability_usable_event_kind": "serving_configuration_established",
+    "requires_admissible_state_valid_interpretation_and_eligible_path": true
+  },
+  "protected_acknowledgement": {
+    "operation_class": "approved_campaign_adjustment",
+    "result": "accepted_for_report"
+  }
+}

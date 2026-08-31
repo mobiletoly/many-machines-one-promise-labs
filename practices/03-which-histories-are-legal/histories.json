@@ -1,0 +1,337 @@
+{
+  "visibility_histories": [
+    {
+      "id": "V-1",
+      "contract_id": "C-V1",
+      "events": [
+        {
+          "id": "V1-W-ACCEPT",
+          "order": 1,
+          "kind": "write_accepted",
+          "session_id": "J-17",
+          "operation_id": "W-1",
+          "fact_id": "W-1",
+          "field": "preferred_pickup",
+          "value": "new bar"
+        },
+        {
+          "id": "V1-W-RESPOND",
+          "order": 2,
+          "kind": "write_responded",
+          "session_id": "J-17",
+          "operation_id": "W-1",
+          "result": "saved"
+        },
+        {
+          "id": "V1-R1",
+          "order": 3,
+          "kind": "read_succeeded",
+          "session_id": "J-17",
+          "operation_id": "R-1",
+          "state_fact_ids": [],
+          "result": "original bar"
+        }
+      ]
+    },
+    {
+      "id": "V-2",
+      "contract_id": "C-V2",
+      "events": [
+        {
+          "id": "V2-N10",
+          "order": 1,
+          "kind": "fact_accepted",
+          "fact_id": "N-10",
+          "fact_type": "notice"
+        },
+        {
+          "id": "V2-N11",
+          "order": 2,
+          "kind": "fact_accepted",
+          "fact_id": "N-11",
+          "fact_type": "notice"
+        },
+        {
+          "id": "V2-RA",
+          "order": 3,
+          "kind": "read_succeeded",
+          "session_id": "J-88",
+          "operation_id": "R-2A",
+          "state_fact_ids": ["N-10", "N-11"],
+          "result_fact_ids": ["N-10", "N-11"]
+        },
+        {
+          "id": "V2-RB",
+          "order": 4,
+          "kind": "read_succeeded",
+          "session_id": "J-88",
+          "operation_id": "R-2B",
+          "state_fact_ids": ["N-10"],
+          "result_fact_ids": ["N-10"]
+        }
+      ]
+    },
+    {
+      "id": "V-3",
+      "contract_id": "C-V3",
+      "events": [
+        {
+          "id": "V3-N10",
+          "order": 1,
+          "kind": "fact_accepted",
+          "fact_id": "N-10",
+          "fact_type": "notice"
+        },
+        {
+          "id": "V3-N11",
+          "order": 2,
+          "kind": "fact_accepted",
+          "fact_id": "N-11",
+          "fact_type": "notice"
+        },
+        {
+          "id": "V3-RA",
+          "order": 3,
+          "kind": "read_succeeded",
+          "session_id": "J-89",
+          "operation_id": "R-3A",
+          "state_fact_ids": ["N-10", "N-11"],
+          "result_fact_ids": ["N-10", "N-11"]
+        },
+        {
+          "id": "V3-N12",
+          "order": 4,
+          "kind": "fact_accepted",
+          "fact_id": "N-12",
+          "fact_type": "withdrawal",
+          "withdraws_fact_id": "N-11"
+        },
+        {
+          "id": "V3-RB",
+          "order": 5,
+          "kind": "read_succeeded",
+          "session_id": "J-89",
+          "operation_id": "R-3B",
+          "state_fact_ids": ["N-10", "N-11", "N-12"],
+          "result_fact_ids": ["N-10"]
+        }
+      ]
+    },
+    {
+      "id": "V-4",
+      "contract_id": "C-V4",
+      "events": [
+        {
+          "id": "V4-X",
+          "order": 1,
+          "kind": "fact_accepted",
+          "fact_id": "X",
+          "fact_type": "event",
+          "version": 7
+        },
+        {
+          "id": "V4-U",
+          "order": 2,
+          "kind": "fact_accepted",
+          "fact_id": "U",
+          "fact_type": "tasting_note"
+        },
+        {
+          "id": "V4-RX",
+          "order": 3,
+          "kind": "read_succeeded",
+          "operation_id": "RX",
+          "state_fact_ids": ["X"],
+          "result_fact_ids": ["X"],
+          "version": 7
+        },
+        {
+          "id": "V4-Y-SUBMIT",
+          "order": 4,
+          "kind": "operation_submitted",
+          "operation_id": "Y",
+          "source_read_id": "RX",
+          "selected_fact_id": "X",
+          "selected_version": 7
+        },
+        {
+          "id": "V4-Y-PREDICATE",
+          "order": 5,
+          "kind": "predicate_evaluated",
+          "operation_id": "Y",
+          "predicate_id": "P-Y-VERSION",
+          "predicate_input_role": "selected_event_version",
+          "predicate_fact_id": "X",
+          "predicate_version": 7,
+          "predicate_passed": true
+        },
+        {
+          "id": "V4-Y-ACCEPT",
+          "order": 6,
+          "kind": "operation_accepted",
+          "operation_id": "Y",
+          "fact_id": "Y"
+        },
+        {
+          "id": "V4-B-RECEIVE-Y",
+          "order": 7,
+          "kind": "fact_replicated",
+          "fact_id": "Y",
+          "replica_id": "B"
+        },
+        {
+          "id": "V4-D",
+          "order": 8,
+          "kind": "read_succeeded",
+          "operation_id": "D",
+          "replica_id": "B",
+          "state_fact_ids": ["Y"],
+          "result_fact_ids": ["Y"],
+          "exposes_operation_id": "Y"
+        }
+      ]
+    }
+  ],
+  "object_histories": [
+    {
+      "id": "O-1",
+      "contract_id": "C-O1",
+      "events": [
+        {
+          "id": "O1-W-INVOKE",
+          "order": 1,
+          "kind": "invoke",
+          "operation_id": "W-42",
+          "operation_kind": "set_display_name",
+          "argument": "Jessica"
+        },
+        {
+          "id": "O1-W-RESPOND",
+          "order": 2,
+          "kind": "respond",
+          "operation_id": "W-42",
+          "result": "saved"
+        },
+        {
+          "id": "O1-R-INVOKE",
+          "order": 3,
+          "kind": "invoke",
+          "operation_id": "R-42",
+          "operation_kind": "get_display_name"
+        },
+        {
+          "id": "O1-R-RESPOND",
+          "order": 4,
+          "kind": "respond",
+          "operation_id": "R-42",
+          "result": "Jess"
+        }
+      ]
+    },
+    {
+      "id": "O-2",
+      "contract_id": "C-O1",
+      "events": [
+        {
+          "id": "O2-W-INVOKE",
+          "order": 1,
+          "kind": "invoke",
+          "operation_id": "W-43",
+          "operation_kind": "set_display_name",
+          "argument": "Jessica"
+        },
+        {
+          "id": "O2-R-INVOKE",
+          "order": 2,
+          "kind": "invoke",
+          "operation_id": "R-43",
+          "operation_kind": "get_display_name"
+        },
+        {
+          "id": "O2-R-RESPOND",
+          "order": 3,
+          "kind": "respond",
+          "operation_id": "R-43",
+          "result": "Jess"
+        },
+        {
+          "id": "O2-W-RESPOND",
+          "order": 4,
+          "kind": "respond",
+          "operation_id": "W-43",
+          "result": "saved"
+        }
+      ]
+    },
+    {
+      "id": "O-3",
+      "contract_id": "C-O1",
+      "events": [
+        {
+          "id": "O3-W-INVOKE",
+          "order": 1,
+          "kind": "invoke",
+          "operation_id": "W-44",
+          "operation_kind": "set_display_name",
+          "argument": "Jessica"
+        },
+        {
+          "id": "O3-W-RESPOND",
+          "order": 2,
+          "kind": "respond",
+          "operation_id": "W-44",
+          "result": "saved"
+        },
+        {
+          "id": "O3-R-INVOKE",
+          "order": 3,
+          "kind": "invoke",
+          "operation_id": "R-44",
+          "operation_kind": "get_display_name"
+        },
+        {
+          "id": "O3-R-RESPOND",
+          "order": 4,
+          "kind": "respond",
+          "operation_id": "R-44",
+          "result": "Jessica"
+        }
+      ]
+    },
+    {
+      "id": "O-4",
+      "contract_id": "C-O1",
+      "events": [
+        {
+          "id": "O4-W-INVOKE",
+          "order": 1,
+          "kind": "invoke",
+          "operation_id": "W-45",
+          "operation_kind": "set_display_name",
+          "argument": "Jessica"
+        },
+        {
+          "id": "O4-R-INVOKE",
+          "order": 2,
+          "kind": "invoke",
+          "operation_id": "R-45",
+          "operation_kind": "get_display_name"
+        },
+        {
+          "id": "O4-R-RESPOND",
+          "order": 3,
+          "kind": "respond",
+          "operation_id": "R-45",
+          "result": "Cabernet"
+        },
+        {
+          "id": "O4-W-RESPOND",
+          "order": 4,
+          "kind": "respond",
+          "operation_id": "W-45",
+          "result": "saved"
+        }
+      ]
+    }
+  ]
+}

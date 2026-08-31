@@ -1,0 +1,48 @@
+{
+  "number": 5,
+  "id": "what-may-the-product-claim",
+  "type": "practice",
+  "title": "What May the Product Claim?",
+  "capabilities": [
+    "multi-authority-outcome-review",
+    "corrective-obligation-review",
+    "product-claim-boundary",
+    "product-contract-architecture-fit",
+    "guarantee-boundary"
+  ],
+  "recommendedAfterChapter": 24,
+  "artifacts": {
+    "contract": "practices/05-what-may-the-product-claim/contract.json",
+    "workflowDesign": "practices/05-what-may-the-product-claim/workflow-design.json",
+    "authorityEvidence": "practices/05-what-may-the-product-claim/authority-evidence.jsonl",
+    "claimCandidates": "practices/05-what-may-the-product-claim/claim-candidates.json",
+    "starterReview": "practices/05-what-may-the-product-claim/starter/product-claim-review.json",
+    "solutionReview": "practices/05-what-may-the-product-claim/solution/product-claim-review.json"
+  },
+  "commands": {
+    "failure": {
+      "run": "GOWORK=off go run ./practices/05-what-may-the-product-claim/cmd/replay -review practices/05-what-may-the-product-claim/starter/product-claim-review.json",
+      "expectedExit": 1,
+      "expectedOutput": "property violated: product claim review exceeds or omits the declared evidence"
+    },
+    "verifyReader": {
+      "run": "./scripts/verify-practice-05.sh /tmp/practice-05-product-claim-review.json",
+      "expectedExit": 0,
+      "expectedOutput": "Practice 05 reader review satisfies the declared product-claim contract."
+    },
+    "solution": {
+      "run": "GOWORK=off go run ./practices/05-what-may-the-product-claim/cmd/replay -review practices/05-what-may-the-product-claim/solution/product-claim-review.json",
+      "expectedExit": 0,
+      "expectedOutput": "Practice 05 product claim review satisfies the declared evidence."
+    },
+    "boundary": {
+      "run": "GOWORK=off go test -count=1 ./practices/05-what-may-the-product-claim/replay -run '^TestBoundary'",
+      "expectedExit": 0
+    },
+    "check": {
+      "run": "./scripts/check-practice-05.sh",
+      "expectedExit": 0,
+      "expectedOutput": "Practice 05 repository check passed."
+    }
+  }
+}

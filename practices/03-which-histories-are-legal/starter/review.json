@@ -1,0 +1,160 @@
+{
+  "name": "starter",
+  "visibility_reviews": [
+    {
+      "history_id": "V-1",
+      "scope": "session:J-17:profile:P-17:preferred_pickup",
+      "required_facts": [],
+      "state_evidence_event_id": "V1-R1",
+      "later_explaining_changes": [],
+      "information_paths": [],
+      "chronological_non_dependencies": [],
+      "verdict": "satisfies",
+      "missing_fact_ids": []
+    },
+    {
+      "history_id": "V-2",
+      "scope": "session:J-88:feed:F-88:active-notices",
+      "required_facts": [
+        {
+          "fact_id": "N-10",
+          "basis": "earlier_successful_observation",
+          "evidence_ids": ["V2-RA", "V2-RB"]
+        },
+        {
+          "fact_id": "N-11",
+          "basis": "earlier_successful_observation",
+          "evidence_ids": ["V2-RA", "V2-RB"]
+        }
+      ],
+      "state_evidence_event_id": "V2-RB",
+      "later_explaining_changes": [],
+      "information_paths": [],
+      "chronological_non_dependencies": [],
+      "verdict": "violates",
+      "missing_fact_ids": ["N-11"]
+    },
+    {
+      "history_id": "V-3",
+      "scope": "session:J-89:feed:F-89:active-notices",
+      "required_facts": [
+        {
+          "fact_id": "N-10",
+          "basis": "earlier_successful_observation",
+          "evidence_ids": ["V3-RA", "V3-RB"]
+        },
+        {
+          "fact_id": "N-11",
+          "basis": "earlier_successful_observation",
+          "evidence_ids": ["V3-RA", "V3-RB"]
+        }
+      ],
+      "state_evidence_event_id": "V3-RB",
+      "later_explaining_changes": [],
+      "information_paths": [],
+      "chronological_non_dependencies": [],
+      "verdict": "violates",
+      "missing_fact_ids": ["N-11"]
+    },
+    {
+      "history_id": "V-4",
+      "scope": "activity:I-42:accepted-reservation",
+      "required_facts": [
+        {
+          "fact_id": "X",
+          "basis": "earlier_timestamp",
+          "evidence_ids": ["V4-X", "V4-Y-SUBMIT"]
+        },
+        {
+          "fact_id": "U",
+          "basis": "earlier_timestamp",
+          "evidence_ids": ["V4-U", "V4-Y-SUBMIT"]
+        }
+      ],
+      "state_evidence_event_id": "V4-D",
+      "later_explaining_changes": [],
+      "information_paths": [
+        {
+          "from_fact_id": "X",
+          "to_operation_id": "Y",
+          "predicate_id": "",
+          "input_role": "",
+          "evidence_ids": ["V4-RX", "V4-Y-SUBMIT"]
+        }
+      ],
+      "chronological_non_dependencies": [],
+      "verdict": "violates",
+      "missing_fact_ids": ["X", "U"]
+    }
+  ],
+  "object_reviews": [
+    {
+      "history_id": "O-1",
+      "forced_edges": [
+        {
+          "before": "W-42",
+          "after": "R-42",
+          "evidence_ids": ["O1-W-RESPOND", "O1-R-INVOKE"]
+        }
+      ],
+      "witness_order": [],
+      "contradiction": {
+        "kind": "forced_order_result_conflict",
+        "operation_ids": ["W-42", "R-42"],
+        "evidence_ids": ["O1-W-RESPOND", "O1-R-INVOKE", "O1-R-RESPOND"]
+      },
+      "verdict": "violates"
+    },
+    {
+      "history_id": "O-2",
+      "forced_edges": [
+        {
+          "before": "W-43",
+          "after": "R-43",
+          "evidence_ids": ["O2-W-INVOKE", "O2-R-INVOKE"]
+        }
+      ],
+      "witness_order": [],
+      "contradiction": {
+        "kind": "forced_order_result_conflict",
+        "operation_ids": ["W-43", "R-43"],
+        "evidence_ids": ["O2-W-INVOKE", "O2-R-INVOKE", "O2-R-RESPOND"]
+      },
+      "verdict": "violates"
+    },
+    {
+      "history_id": "O-3",
+      "forced_edges": [
+        {
+          "before": "W-44",
+          "after": "R-44",
+          "evidence_ids": ["O3-W-RESPOND", "O3-R-INVOKE"]
+        }
+      ],
+      "witness_order": ["W-44", "R-44"],
+      "contradiction": {
+        "kind": "none",
+        "operation_ids": [],
+        "evidence_ids": []
+      },
+      "verdict": "satisfies"
+    },
+    {
+      "history_id": "O-4",
+      "forced_edges": [],
+      "witness_order": ["R-45", "W-45"],
+      "contradiction": {
+        "kind": "none",
+        "operation_ids": [],
+        "evidence_ids": []
+      },
+      "verdict": "satisfies"
+    }
+  ],
+  "claims": {
+    "session_visibility_establishes_object_linearizability": true,
+    "object_history_establishes_session_visibility": true,
+    "one_dependency_establishes_general_causal_consistency": true,
+    "one_legal_history_guarantees_future_availability": true
+  }
+}

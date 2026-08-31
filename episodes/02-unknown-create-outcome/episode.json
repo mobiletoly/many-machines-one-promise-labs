@@ -1,0 +1,40 @@
+{
+  "number": 2,
+  "id": "unknown-create-outcome",
+  "title": "The Commit Happened, the Response Did Not",
+  "concepts": [
+    "retry",
+    "logical-operation-identity",
+    "idempotency",
+    "durable-acceptance",
+    "acknowledgement"
+  ],
+  "recommendedAfterChapter": 10,
+  "states": {
+    "start": "episodes/02-unknown-create-outcome/start",
+    "solution": "episodes/02-unknown-create-outcome/solution"
+  },
+  "commands": {
+    "happyPath": {
+      "run": "GOWORK=off go test -count=1 ./episodes/02-unknown-create-outcome/start -run '^TestCreateOrderHappyPath$'",
+      "expectedExit": 0
+    },
+    "failure": {
+      "run": "GOWORK=off go test -count=1 -tags=failure ./episodes/02-unknown-create-outcome/start -run '^TestRetryAfterCommittedResponseIsLost$'",
+      "expectedExit": 1,
+      "expectedOutput": "property violated: canonical_orders(operation=op-61) = 2, want <= 1"
+    },
+    "solution": {
+      "run": "GOWORK=off go test -count=1 -tags=failure ./episodes/02-unknown-create-outcome/solution -run '^TestRetryAfterCommittedResponseIsLost$'",
+      "expectedExit": 0
+    },
+    "boundary": {
+      "run": "GOWORK=off go test -count=1 ./episodes/02-unknown-create-outcome/solution -run '^TestBoundaryOneAcceptedOrderDoesNotMeanOneDispatch$'",
+      "expectedExit": 0
+    },
+    "verify": {
+      "run": "./scripts/verify-episode-02.sh",
+      "expectedExit": 0
+    }
+  }
+}

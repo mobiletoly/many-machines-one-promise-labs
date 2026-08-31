@@ -1,0 +1,11 @@
+{
+  "name": "starter",
+  "initial_inference": "crashed",
+  "ordinary_while_suppressed": "reject",
+  "evidence_action": "none",
+  "max_evidence_calls_per_round": 0,
+  "restore_on": "none",
+  "post_restore_claim": "x_recovered",
+  "caller_scope": "checkout-p",
+  "operation_scope": "shipping_quote"
+}

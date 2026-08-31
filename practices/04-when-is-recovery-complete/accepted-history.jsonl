@@ -1,0 +1,8 @@
+{"id":"H1","position":10,"accepted_at":"2026-08-30T11:58:00Z","operation_id":"O-101","operation_class":"campaign_telemetry","acknowledgement_result":"recorded"}
+{"id":"H2","position":20,"accepted_at":"2026-08-30T11:58:30Z","operation_id":"O-102","operation_class":"campaign_telemetry","acknowledgement_result":"recorded"}
+{"id":"H3","position":30,"accepted_at":"2026-08-30T11:59:00Z","operation_id":"O-103","operation_class":"campaign_telemetry","acknowledgement_result":"recorded"}
+{"id":"H4","position":40,"accepted_at":"2026-08-30T11:59:20Z","operation_id":"O-104","operation_class":"campaign_telemetry","acknowledgement_result":"recorded"}
+{"id":"H5","position":50,"accepted_at":"2026-08-30T11:59:25Z","operation_id":"O-105","operation_class":"campaign_telemetry","acknowledgement_result":"recorded"}
+{"id":"H6","position":60,"accepted_at":"2026-08-30T11:59:45Z","operation_id":"O-106","operation_class":"campaign_status","acknowledgement_result":"recorded","status_code":2}
+{"id":"H7","position":70,"accepted_at":"2026-08-30T11:59:50Z","operation_id":"O-107","operation_class":"approved_campaign_adjustment","acknowledgement_result":"accepted_for_report"}
+{"id":"H8","position":80,"accepted_at":"2026-08-30T11:59:55Z","operation_id":"O-108","operation_class":"campaign_telemetry","acknowledgement_result":"recorded"}

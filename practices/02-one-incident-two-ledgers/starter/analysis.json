@@ -1,0 +1,67 @@
+{
+  "name": "starter",
+  "load_ledger": {
+    "eligible_logical_operations": 120,
+    "checkout_attempts_for_eligible_operations": 120,
+    "retry_attempts": 20,
+    "retry_amplification": 1.0,
+    "pre_window_queued_attempts": 0,
+    "browse_permits_retained": 11,
+    "total_permits": 12,
+    "checkout_attempt_capacity_per_interval": 1
+  },
+  "product_ledger": {
+    "good_logical_operations": 100,
+    "bad_logical_operations": 0,
+    "sli_percent": 100,
+    "slo_target_percent": 99,
+    "bad_event_allowance": 1,
+    "budget_exceeded_by_operations": 0,
+    "max_first_result_latency_ms": 230,
+    "slo_pass": true
+  },
+  "resource_retention": {
+    "start_design_retains_y_across_x": true,
+    "retention_evidence_kind": "resource_retained",
+    "product_requires_long_transaction": true,
+    "alternative_evidence_scheme_may_release_y": false
+  },
+  "backpressure": {
+    "present": true,
+    "waiting_evidence_kind": "queue_full",
+    "producer_evidence_kind": "queue_depth",
+    "full_queue_alone_is_backpressure": true
+  },
+  "allocation": {
+    "browse_permits": 11,
+    "checkout_permits": 1,
+    "borrowing": false
+  },
+  "corrected_prediction": {
+    "checkout_attempts": 120,
+    "retry_attempts": 20,
+    "browse_permits_retained": 11,
+    "browse_attempts_waiting": 1,
+    "producer_claim_paused": true,
+    "good_logical_operations": 100,
+    "bad_logical_operations": 0,
+    "sli_percent": 100,
+    "max_first_result_latency_ms": 230,
+    "slo_pass": true
+  },
+  "boundary_prediction": {
+    "dependency_x_capable": true,
+    "browse_latency_ms": 50,
+    "shared_pool_browse_admitted": 12,
+    "isolated_browse_admitted": 12,
+    "isolated_browse_waiting": 0,
+    "idle_checkout_permits": 0,
+    "fungibility_lost": false
+  },
+  "claims": {
+    "scoped_claim": "future_slo_compliance_guaranteed",
+    "future_slo_guaranteed": true,
+    "is_only_legal_correction": true,
+    "x_failure_proven": true
+  }
+}

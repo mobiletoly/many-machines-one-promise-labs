@@ -1,0 +1,46 @@
+{
+  "number": 3,
+  "id": "which-histories-are-legal",
+  "type": "practice",
+  "title": "Which Histories Are Legal?",
+  "capabilities": [
+    "read-your-writes-review",
+    "causal-dependency-review",
+    "monotonic-reads-review",
+    "linearizability-history-review",
+    "guarantee-boundary"
+  ],
+  "recommendedAfterChapter": 32,
+  "artifacts": {
+    "contract": "practices/03-which-histories-are-legal/contract.json",
+    "histories": "practices/03-which-histories-are-legal/histories.json",
+    "starterReview": "practices/03-which-histories-are-legal/starter/review.json",
+    "solutionReview": "practices/03-which-histories-are-legal/solution/review.json"
+  },
+  "commands": {
+    "failure": {
+      "run": "GOWORK=off go run ./practices/03-which-histories-are-legal/cmd/replay -review practices/03-which-histories-are-legal/starter/review.json",
+      "expectedExit": 1,
+      "expectedOutput": "property violated: review does not prove the declared histories"
+    },
+    "verifyReader": {
+      "run": "./scripts/verify-practice-03.sh /tmp/practice-03-review.json",
+      "expectedExit": 0,
+      "expectedOutput": "Practice 03 reader review satisfies the declared contract."
+    },
+    "solution": {
+      "run": "GOWORK=off go run ./practices/03-which-histories-are-legal/cmd/replay -review practices/03-which-histories-are-legal/solution/review.json",
+      "expectedExit": 0,
+      "expectedOutput": "Practice 03 review satisfies the declared histories."
+    },
+    "boundary": {
+      "run": "GOWORK=off go test -count=1 ./practices/03-which-histories-are-legal/replay -run '^TestBoundary'",
+      "expectedExit": 0
+    },
+    "check": {
+      "run": "./scripts/check-practice-03.sh",
+      "expectedExit": 0,
+      "expectedOutput": "Practice 03 repository check passed."
+    }
+  }
+}

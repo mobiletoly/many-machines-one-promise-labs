@@ -1,0 +1,48 @@
+{
+  "number": 4,
+  "id": "when-is-recovery-complete",
+  "type": "practice",
+  "title": "When Is Recovery Complete?",
+  "capabilities": [
+    "recovery-evidence-review",
+    "acknowledgement-preservation-review",
+    "software-interpretation-boundary",
+    "recovery-objective-review",
+    "guarantee-boundary"
+  ],
+  "recommendedAfterChapter": 36,
+  "artifacts": {
+    "contract": "practices/04-when-is-recovery-complete/contract.json",
+    "acceptedHistory": "practices/04-when-is-recovery-complete/accepted-history.jsonl",
+    "recoveryEvidence": "practices/04-when-is-recovery-complete/recovery-evidence.jsonl",
+    "servingEvents": "practices/04-when-is-recovery-complete/serving-events.jsonl",
+    "starterDecision": "practices/04-when-is-recovery-complete/starter/recovery-decision.json",
+    "solutionDecision": "practices/04-when-is-recovery-complete/solution/recovery-decision.json"
+  },
+  "commands": {
+    "failure": {
+      "run": "GOWORK=off go run ./practices/04-when-is-recovery-complete/cmd/replay -decision practices/04-when-is-recovery-complete/starter/recovery-decision.json",
+      "expectedExit": 1,
+      "expectedOutput": "property violated: recovery decision does not prove the declared completion boundary"
+    },
+    "verifyReader": {
+      "run": "./scripts/verify-practice-04.sh /tmp/practice-04-recovery-decision.json",
+      "expectedExit": 0,
+      "expectedOutput": "Practice 04 reader decision satisfies the declared recovery contract."
+    },
+    "solution": {
+      "run": "GOWORK=off go run ./practices/04-when-is-recovery-complete/cmd/replay -decision practices/04-when-is-recovery-complete/solution/recovery-decision.json",
+      "expectedExit": 0,
+      "expectedOutput": "Practice 04 recovery decision satisfies the declared evidence."
+    },
+    "boundary": {
+      "run": "GOWORK=off go test -count=1 ./practices/04-when-is-recovery-complete/replay -run '^TestBoundary'",
+      "expectedExit": 0
+    },
+    "check": {
+      "run": "./scripts/check-practice-04.sh",
+      "expectedExit": 0,
+      "expectedOutput": "Practice 04 repository check passed."
+    }
+  }
+}

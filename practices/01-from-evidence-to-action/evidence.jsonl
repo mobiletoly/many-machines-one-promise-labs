@@ -1,0 +1,5 @@
+{"at":"10:00:00.000","observer":"checkout-p","kind":"shipping_quote_deadline","operation_id":"quote-101","detail":"no usable result within 200 ms"}
+{"at":"10:00:01.000","observer":"checkout-p","kind":"shipping_quote_deadline","operation_id":"quote-102","detail":"no usable result within 200 ms"}
+{"at":"10:00:02.000","observer":"checkout-p","kind":"shipping_quote_deadline","operation_id":"quote-103","detail":"no usable result within 200 ms"}
+{"at":"10:00:03.000","observer":"monitor-m","kind":"heartbeat_missing","participant":"shipping-x","detail":"three expected heartbeats absent"}
+{"at":"10:00:03.001","observer":"detector-d","kind":"participant_suspected","participant":"shipping-x","detail":"shipping-x suspected under the declared detector rule"}

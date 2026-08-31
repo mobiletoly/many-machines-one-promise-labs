@@ -1,0 +1,87 @@
+{
+  "id": "CLAIM-95",
+  "evidence_authority": {
+    "case_operation_inventory_complete": true,
+    "submission_evidence_complete_through_each_cut": true,
+    "authority_state_events_authoritative": true
+  },
+  "rules": [
+    {
+      "id": "payment-captured",
+      "kind": "operation_state",
+      "role": "capture",
+      "state": "accepted"
+    },
+    {
+      "id": "purchase-confirmed",
+      "kind": "all_operation_states",
+      "conditions": [
+        {"role": "capture", "state": "accepted"},
+        {"role": "reservation", "state": "accepted"}
+      ]
+    },
+    {
+      "id": "clean-failure",
+      "kind": "all_operation_states",
+      "conditions": [
+        {"role": "capture", "state": "rejected"},
+        {"role": "reservation", "state": "rejected"}
+      ]
+    },
+    {
+      "id": "return-required",
+      "kind": "all_operation_states",
+      "conditions": [
+        {"role": "capture", "state": "accepted"},
+        {"role": "reservation", "state": "rejected"}
+      ]
+    },
+    {
+      "id": "return-unresolved",
+      "kind": "obligation_status",
+      "status": "unresolved"
+    },
+    {
+      "id": "return-satisfied",
+      "kind": "obligation_status",
+      "status": "satisfied"
+    },
+    {
+      "id": "return-unsatisfied",
+      "kind": "obligation_status",
+      "status": "unsatisfied"
+    },
+    {
+      "id": "return-attempt-rejected",
+      "kind": "operation_state",
+      "role": "return_primary",
+      "state": "rejected"
+    }
+  ],
+  "return_obligation": {
+    "id": "return-captured-payment",
+    "trigger_rule_id": "return-required",
+    "satisfaction_roles": ["return_primary", "return_alternative"],
+    "satisfying_state": "accepted",
+    "unsatisfied_requires_complete_terminal_domain": true
+  },
+  "claim_semantics": [
+    {"id": "payment-captured", "asserts_rule_id": "payment-captured"},
+    {"id": "purchase-confirmed", "asserts_rule_id": "purchase-confirmed"},
+    {"id": "clean-failure", "asserts_rule_id": "clean-failure"},
+    {"id": "return-required", "asserts_rule_id": "return-required"},
+    {"id": "return-unresolved", "asserts_rule_id": "return-unresolved"},
+    {"id": "return-complete", "asserts_rule_id": "return-satisfied"},
+    {"id": "return-unsatisfied", "asserts_rule_id": "return-unsatisfied"},
+    {"id": "return-attempt-rejected", "asserts_rule_id": "return-attempt-rejected"}
+  ],
+  "stronger_contract": {
+    "id": "all-or-nothing-purchase",
+    "forbidden_terminal_splits": [
+      {"capture": "accepted", "reservation": "rejected"},
+      {"capture": "rejected", "reservation": "accepted"}
+    ],
+    "healthy_capable_participants_must_allow_commit": true,
+    "later_correction_satisfies_original_terminal_contract": false
+  }
+}

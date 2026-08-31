@@ -1,0 +1,61 @@
+{
+  "name": "starter",
+  "state_reviews": [
+    {
+      "state_id": "R-A",
+      "latest_complete_fact_id": "H8",
+      "complete_prefix_fact_ids": ["H1", "H2", "H3", "H4", "H6", "H7", "H8"],
+      "membership_evidence_id": "RE-A",
+      "preserved_protected_operation_ids": ["O-107"],
+      "missing_protected_operation_ids": [],
+      "rpo_verdict": "pass",
+      "acknowledgement_verdict": "pass",
+      "admissibility_verdict": "pass"
+    },
+    {
+      "state_id": "R-B",
+      "latest_complete_fact_id": "H6",
+      "complete_prefix_fact_ids": ["H1", "H2", "H3", "H4", "H5", "H6"],
+      "membership_evidence_id": "RE-B",
+      "preserved_protected_operation_ids": [],
+      "missing_protected_operation_ids": [],
+      "rpo_verdict": "pass",
+      "acknowledgement_verdict": "pass",
+      "admissibility_verdict": "pass"
+    },
+    {
+      "state_id": "R-C",
+      "latest_complete_fact_id": "H8",
+      "complete_prefix_fact_ids": ["H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8"],
+      "membership_evidence_id": "RE-C",
+      "preserved_protected_operation_ids": ["O-107"],
+      "missing_protected_operation_ids": [],
+      "rpo_verdict": "pass",
+      "acknowledgement_verdict": "pass",
+      "admissibility_verdict": "pass"
+    }
+  ],
+  "rto_review": {
+    "end_boundary_event_id": "E2",
+    "end_boundary_at": "2026-08-30T12:00:50Z",
+    "state_id": "R-A",
+    "build_id": "V2",
+    "path_id": "P-CAMPAIGN",
+    "evidence_ids": ["E2", "RE-A"],
+    "rejected_earlier_events": [
+      {
+        "event_id": "E1",
+        "reasons": ["generic_signal"]
+      }
+    ],
+    "first_customer_result_event_id": "E9",
+    "first_customer_result_relation": "defines_recovery_boundary",
+    "rto_verdict": "pass"
+  },
+  "claims": {
+    "all_capabilities_recovered": "supported",
+    "future_disruptions_meet_objectives": "supported",
+    "rpo_selects_recovery_mechanism": "supported",
+    "first_customer_result_defines_rto_end": "supported"
+  }
+}

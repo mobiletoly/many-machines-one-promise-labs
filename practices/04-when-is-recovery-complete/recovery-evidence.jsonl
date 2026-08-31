@@ -1,0 +1,3 @@
+{"evidence_id":"RE-A","state_id":"R-A","accounted_fact_ids":["H1","H2","H3","H4","H6","H7","H8"],"status_code":2,"status_code_fact_id":"H6"}
+{"evidence_id":"RE-B","state_id":"R-B","accounted_fact_ids":["H1","H2","H3","H4","H5","H6","H8"],"status_code":2,"status_code_fact_id":"H6"}
+{"evidence_id":"RE-C","state_id":"R-C","accounted_fact_ids":["H1","H2","H3","H4","H5","H6","H7","H8"],"status_code":2,"status_code_fact_id":"H6"}

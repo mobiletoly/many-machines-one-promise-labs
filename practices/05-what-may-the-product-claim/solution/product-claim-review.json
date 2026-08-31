@@ -1,0 +1,220 @@
+{
+  "name": "reference",
+  "cut_reviews": [
+    {
+      "case_id": "P-95",
+      "cut_id": "K1",
+      "authority_states": [
+        {"operation_id":"C-95","state":"accepted","evidence_ids":["E2"]},
+        {"operation_id":"R-95","state":"unknown","evidence_ids":["E3"]},
+        {"operation_id":"F-95","state":"never_attempted","evidence_ids":[]},
+        {"operation_id":"G-95","state":"never_attempted","evidence_ids":[]}
+      ],
+      "applied_contract_rules": [
+        {"rule_id":"payment-captured","evidence_ids":["E2"]}
+      ],
+      "obligation": {
+        "id":"return-captured-payment",
+        "status":"not_triggered",
+        "evidence_domain_complete":false,
+        "evidence_ids":["E2","E3"]
+      },
+      "claim_reviews": [
+        {"claim_id":"payment-captured","verdict":"supported","reason":"declared_predicate_established","evidence_ids":["E2"]},
+        {"claim_id":"purchase-confirmed","verdict":"unsupported","reason":"required_predicate_not_established","evidence_ids":["E2","E3"]},
+        {"claim_id":"clean-failure","verdict":"unsupported","reason":"authoritative_fact_contradicts_claim","evidence_ids":["E2","E3"]}
+      ]
+    },
+    {
+      "case_id": "P-95",
+      "cut_id": "K2",
+      "authority_states": [
+        {"operation_id":"C-95","state":"accepted","evidence_ids":["E2"]},
+        {"operation_id":"R-95","state":"rejected","evidence_ids":["E4"]},
+        {"operation_id":"F-95","state":"never_attempted","evidence_ids":[]},
+        {"operation_id":"G-95","state":"never_attempted","evidence_ids":[]}
+      ],
+      "applied_contract_rules": [
+        {"rule_id":"payment-captured","evidence_ids":["E2"]},
+        {"rule_id":"return-required","evidence_ids":["E2","E4"]},
+        {"rule_id":"return-unresolved","evidence_ids":["E2","E4"]}
+      ],
+      "obligation": {
+        "id":"return-captured-payment",
+        "status":"unresolved",
+        "evidence_domain_complete":false,
+        "evidence_ids":["E2","E4"]
+      },
+      "claim_reviews": [
+        {"claim_id":"payment-captured","verdict":"supported","reason":"declared_predicate_established","evidence_ids":["E2"]},
+        {"claim_id":"return-required","verdict":"supported","reason":"declared_predicate_established","evidence_ids":["E2","E4"]},
+        {"claim_id":"purchase-confirmed","verdict":"unsupported","reason":"authoritative_fact_contradicts_claim","evidence_ids":["E2","E4"]},
+        {"claim_id":"clean-failure","verdict":"unsupported","reason":"authoritative_fact_contradicts_claim","evidence_ids":["E2","E4"]}
+      ]
+    },
+    {
+      "case_id": "P-95",
+      "cut_id": "K3",
+      "authority_states": [
+        {"operation_id":"C-95","state":"accepted","evidence_ids":["E2"]},
+        {"operation_id":"R-95","state":"rejected","evidence_ids":["E4"]},
+        {"operation_id":"F-95","state":"pending","evidence_ids":["E6"]},
+        {"operation_id":"G-95","state":"never_attempted","evidence_ids":[]}
+      ],
+      "applied_contract_rules": [
+        {"rule_id":"payment-captured","evidence_ids":["E2"]},
+        {"rule_id":"return-required","evidence_ids":["E2","E4"]},
+        {"rule_id":"return-unresolved","evidence_ids":["E2","E4","E6"]}
+      ],
+      "obligation": {
+        "id":"return-captured-payment",
+        "status":"unresolved",
+        "evidence_domain_complete":false,
+        "evidence_ids":["E2","E4","E6"]
+      },
+      "claim_reviews": [
+        {"claim_id":"return-required","verdict":"supported","reason":"declared_predicate_established","evidence_ids":["E2","E4"]},
+        {"claim_id":"return-unresolved","verdict":"supported","reason":"declared_predicate_established","evidence_ids":["E2","E4","E6"]},
+        {"claim_id":"return-complete","verdict":"unsupported","reason":"no_recognized_satisfying_outcome","evidence_ids":["E2","E4","E6"]},
+        {"claim_id":"return-unsatisfied","verdict":"unsupported","reason":"satisfaction_domain_incomplete","evidence_ids":["E2","E4","E6"]}
+      ]
+    },
+    {
+      "case_id": "P-95",
+      "cut_id": "K4",
+      "authority_states": [
+        {"operation_id":"C-95","state":"accepted","evidence_ids":["E2"]},
+        {"operation_id":"R-95","state":"rejected","evidence_ids":["E4"]},
+        {"operation_id":"F-95","state":"rejected","evidence_ids":["E7"]},
+        {"operation_id":"G-95","state":"unknown","evidence_ids":["E8"]}
+      ],
+      "applied_contract_rules": [
+        {"rule_id":"payment-captured","evidence_ids":["E2"]},
+        {"rule_id":"return-required","evidence_ids":["E2","E4"]},
+        {"rule_id":"return-unresolved","evidence_ids":["E2","E4","E7","E8"]},
+        {"rule_id":"return-attempt-rejected","evidence_ids":["E7"]}
+      ],
+      "obligation": {
+        "id":"return-captured-payment",
+        "status":"unresolved",
+        "evidence_domain_complete":false,
+        "evidence_ids":["E2","E4","E7","E8"]
+      },
+      "claim_reviews": [
+        {"claim_id":"return-attempt-rejected","verdict":"supported","reason":"declared_predicate_established","evidence_ids":["E7"]},
+        {"claim_id":"return-unresolved","verdict":"supported","reason":"declared_predicate_established","evidence_ids":["E2","E4","E7","E8"]},
+        {"claim_id":"return-unsatisfied","verdict":"unsupported","reason":"satisfaction_domain_incomplete","evidence_ids":["E2","E4","E7","E8"]},
+        {"claim_id":"return-complete","verdict":"unsupported","reason":"no_recognized_satisfying_outcome","evidence_ids":["E2","E4","E7","E8"]}
+      ]
+    },
+    {
+      "case_id": "P-95",
+      "cut_id": "K5",
+      "authority_states": [
+        {"operation_id":"C-95","state":"accepted","evidence_ids":["E2"]},
+        {"operation_id":"R-95","state":"rejected","evidence_ids":["E4"]},
+        {"operation_id":"F-95","state":"rejected","evidence_ids":["E7"]},
+        {"operation_id":"G-95","state":"accepted","evidence_ids":["E9"]}
+      ],
+      "applied_contract_rules": [
+        {"rule_id":"payment-captured","evidence_ids":["E2"]},
+        {"rule_id":"return-required","evidence_ids":["E2","E4"]},
+        {"rule_id":"return-satisfied","evidence_ids":["E2","E4","E7","E9"]},
+        {"rule_id":"return-attempt-rejected","evidence_ids":["E7"]}
+      ],
+      "obligation": {
+        "id":"return-captured-payment",
+        "status":"satisfied",
+        "evidence_domain_complete":true,
+        "evidence_ids":["E2","E4","E7","E9"]
+      },
+      "claim_reviews": [
+        {"claim_id":"payment-captured","verdict":"supported","reason":"declared_predicate_established","evidence_ids":["E2"]},
+        {"claim_id":"return-attempt-rejected","verdict":"supported","reason":"declared_predicate_established","evidence_ids":["E7"]},
+        {"claim_id":"return-complete","verdict":"supported","reason":"declared_predicate_established","evidence_ids":["E2","E4","E7","E9"]},
+        {"claim_id":"clean-failure","verdict":"unsupported","reason":"authoritative_fact_contradicts_claim","evidence_ids":["E2","E4"]}
+      ]
+    },
+    {
+      "case_id": "P-96",
+      "cut_id": "U1",
+      "authority_states": [
+        {"operation_id":"C-96","state":"accepted","evidence_ids":["U1E2"]},
+        {"operation_id":"R-96","state":"rejected","evidence_ids":["U1E4"]},
+        {"operation_id":"F-96","state":"rejected","evidence_ids":["U1E6"]},
+        {"operation_id":"G-96","state":"rejected","evidence_ids":["U1E8"]}
+      ],
+      "applied_contract_rules": [
+        {"rule_id":"payment-captured","evidence_ids":["U1E2"]},
+        {"rule_id":"return-required","evidence_ids":["U1E2","U1E4"]},
+        {"rule_id":"return-unsatisfied","evidence_ids":["U1E2","U1E4","U1E6","U1E8"]},
+        {"rule_id":"return-attempt-rejected","evidence_ids":["U1E6"]}
+      ],
+      "obligation": {
+        "id":"return-captured-payment",
+        "status":"unsatisfied",
+        "evidence_domain_complete":true,
+        "evidence_ids":["U1E2","U1E4","U1E6","U1E8"]
+      },
+      "claim_reviews": [
+        {"claim_id":"return-attempt-rejected","verdict":"supported","reason":"declared_predicate_established","evidence_ids":["U1E6"]},
+        {"claim_id":"return-unsatisfied","verdict":"supported","reason":"declared_predicate_established","evidence_ids":["U1E2","U1E4","U1E6","U1E8"]},
+        {"claim_id":"return-complete","verdict":"unsupported","reason":"no_recognized_satisfying_outcome","evidence_ids":["U1E2","U1E4","U1E6","U1E8"]}
+      ]
+    },
+    {
+      "case_id": "P-97",
+      "cut_id": "CF1",
+      "authority_states": [
+        {"operation_id":"C-97","state":"rejected","evidence_ids":["CF1E2"]},
+        {"operation_id":"R-97","state":"rejected","evidence_ids":["CF1E4"]},
+        {"operation_id":"F-97","state":"never_attempted","evidence_ids":[]},
+        {"operation_id":"G-97","state":"never_attempted","evidence_ids":[]}
+      ],
+      "applied_contract_rules": [
+        {"rule_id":"clean-failure","evidence_ids":["CF1E2","CF1E4"]}
+      ],
+      "obligation": {
+        "id":"return-captured-payment",
+        "status":"not_triggered",
+        "evidence_domain_complete":false,
+        "evidence_ids":["CF1E2","CF1E4"]
+      },
+      "claim_reviews": [
+        {"claim_id":"clean-failure","verdict":"supported","reason":"declared_predicate_established","evidence_ids":["CF1E2","CF1E4"]},
+        {"claim_id":"payment-captured","verdict":"unsupported","reason":"authoritative_fact_contradicts_claim","evidence_ids":["CF1E2"]},
+        {"claim_id":"purchase-confirmed","verdict":"unsupported","reason":"authoritative_fact_contradicts_claim","evidence_ids":["CF1E2","CF1E4"]}
+      ]
+    }
+  ],
+  "stronger_contract_review": {
+    "architecture_reviews": [
+      {
+        "architecture_id":"independent-effects",
+        "contract_fit":"fail",
+        "reasons":["forbidden_mixed_terminal_outcome_reachable"],
+        "distributed_atomic_commit_required":"not_established"
+      },
+      {
+        "architecture_id":"single-commerce-authority",
+        "contract_fit":"pass",
+        "reasons":[],
+        "distributed_atomic_commit_required":"not_required"
+      },
+      {
+        "architecture_id":"coordinator-over-immediate-capture",
+        "contract_fit":"fail",
+        "reasons":["required_participant_cannot_prepare"],
+        "distributed_atomic_commit_required":"not_established"
+      },
+      {
+        "architecture_id":"always-abort",
+        "contract_fit":"fail",
+        "reasons":["healthy_success_progress_not_met"],
+        "distributed_atomic_commit_required":"not_established"
+      }
+    ],
+    "later_correction_satisfies_original_contract":"unsupported",
+    "two_phase_commit_selected":"unsupported"
+  }
+}

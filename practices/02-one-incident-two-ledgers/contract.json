@@ -1,0 +1,17 @@
+{
+  "window": "W-2",
+  "window_start_ms": 0,
+  "window_end_ms": 1000,
+  "total_permits": 12,
+  "service_interval_ms": 10,
+  "eligible_operations": 100,
+  "arrival_interval_ms": 10,
+  "good_deadline_ms": 230,
+  "slo_target_percent": 99,
+  "retry_every_nth_operation": 5,
+  "retry_after_ms": 50,
+  "pre_window_attempts": 5,
+  "start_browse_retained_permits": 11,
+  "boundary_browse_demand": 12,
+  "healthy_browse_latency_ms": 50
+}

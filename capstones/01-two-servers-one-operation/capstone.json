@@ -1,0 +1,42 @@
+{
+  "number": 1,
+  "id": "two-servers-one-operation",
+  "type": "integration-capstone",
+  "title": "Two Servers, One Operation",
+  "sourceEpisodes": [
+    "01-concurrent-claim",
+    "02-unknown-create-outcome"
+  ],
+  "recommendedAfterEpisode": 6,
+  "states": {
+    "start": "capstones/01-two-servers-one-operation/start",
+    "solution": "capstones/01-two-servers-one-operation/solution"
+  },
+  "commands": {
+    "happyPath": {
+      "run": "GOWORK=off go test -count=1 -tags=integration ./capstones/01-two-servers-one-operation/start -run '^TestOneServerCreatesOrder$'",
+      "expectedExit": 0
+    },
+    "failure": {
+      "run": "GOWORK=off go test -count=1 -tags='integration failure' ./capstones/01-two-servers-one-operation/start -run '^TestTwoServersCreateOneOperation$'",
+      "expectedExit": 1,
+      "expectedOutput": "property violated: canonical_orders(operation=op-61) = 2, want <= 1"
+    },
+    "solution": {
+      "run": "GOWORK=off go test -count=1 -tags='integration failure' ./capstones/01-two-servers-one-operation/solution -run '^TestTwoServersCreateOneOperation$'",
+      "expectedExit": 0
+    },
+    "replacement": {
+      "run": "GOWORK=off go test -count=1 -tags=integration ./capstones/01-two-servers-one-operation/solution -run '^TestReplacementReturnsCanonicalResult$'",
+      "expectedExit": 0
+    },
+    "boundary": {
+      "run": "GOWORK=off go test -count=1 -tags=integration ./capstones/01-two-servers-one-operation/solution -run '^(TestConflictingReuseIsRejectedAcrossServers|TestBoundarySamePayloadDifferentOperationsCreateTwoOrders)$'",
+      "expectedExit": 0
+    },
+    "verify": {
+      "run": "./scripts/verify-capstone-01.sh",
+      "expectedExit": 0
+    }
+  }
+}

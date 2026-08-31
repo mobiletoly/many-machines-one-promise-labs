@@ -1,0 +1,11 @@
+{
+  "proposals": [
+    {"case_id":"P-95","cut_id":"K1","claim_ids":["payment-captured","purchase-confirmed","clean-failure"]},
+    {"case_id":"P-95","cut_id":"K2","claim_ids":["payment-captured","return-required","purchase-confirmed","clean-failure"]},
+    {"case_id":"P-95","cut_id":"K3","claim_ids":["return-required","return-unresolved","return-complete","return-unsatisfied"]},
+    {"case_id":"P-95","cut_id":"K4","claim_ids":["return-attempt-rejected","return-unresolved","return-unsatisfied","return-complete"]},
+    {"case_id":"P-95","cut_id":"K5","claim_ids":["payment-captured","return-attempt-rejected","return-complete","clean-failure"]},
+    {"case_id":"P-96","cut_id":"U1","claim_ids":["return-attempt-rejected","return-unsatisfied","return-complete"]},
+    {"case_id":"P-97","cut_id":"CF1","claim_ids":["clean-failure","payment-captured","purchase-confirmed"]}
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "number": 4,
+  "id": "stale-completion",
+  "title": "Worker A Comes Back with Order 73",
+  "concepts": [
+    "work-ownership",
+    "assignment-version",
+    "stale-authority",
+    "guarded-completion",
+    "guarantee-boundary"
+  ],
+  "recommendedAfterChapter": 8,
+  "states": {
+    "start": "episodes/04-stale-completion/start",
+    "solution": "episodes/04-stale-completion/solution"
+  },
+  "commands": {
+    "happyPath": {
+      "run": "GOWORK=off go test -count=1 ./episodes/04-stale-completion/start -run '^TestCurrentOwnerCompletesOrder73$'",
+      "expectedExit": 0
+    },
+    "failure": {
+      "run": "GOWORK=off go test -count=1 -tags=failure ./episodes/04-stale-completion/start -run '^TestFormerOwnerCannotCompleteAfterTransfer$'",
+      "expectedExit": 1,
+      "expectedOutput": "property violated: completion(order=73, worker=worker-a, assignment=17) = prepared, want stale_assignment"
+    },
+    "solution": {
+      "run": "GOWORK=off go test -count=1 -tags=failure ./episodes/04-stale-completion/solution -run '^TestFormerOwnerCannotCompleteAfterTransfer$'",
+      "expectedExit": 0
+    },
+    "boundary": {
+      "run": "GOWORK=off go test -count=1 ./episodes/04-stale-completion/solution -run '^TestBoundaryStaleRejectionLeavesPreparedDrink$'",
+      "expectedExit": 0
+    },
+    "verify": {
+      "run": "./scripts/verify-episode-04.sh",
+      "expectedExit": 0
+    }
+  }
+}

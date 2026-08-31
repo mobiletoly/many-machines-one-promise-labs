@@ -1,0 +1,9 @@
+{
+  "name": "starter",
+  "cut_reviews": [],
+  "stronger_contract_review": {
+    "architecture_reviews": [],
+    "later_correction_satisfies_original_contract": "supported",
+    "two_phase_commit_selected": "supported"
+  }
+}

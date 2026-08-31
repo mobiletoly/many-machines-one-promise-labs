@@ -1,0 +1,39 @@
+{
+  "number": 5,
+  "id": "graceful-degradation",
+  "title": "The List Without Advice",
+  "concepts": [
+    "graceful-degradation",
+    "product-contract",
+    "result-selection-boundary",
+    "guarantee-boundary"
+  ],
+  "recommendedAfterChapter": 30,
+  "states": {
+    "start": "episodes/05-graceful-degradation/start",
+    "solution": "episodes/05-graceful-degradation/solution"
+  },
+  "commands": {
+    "happyPath": {
+      "run": "GOWORK=off go test -count=1 ./episodes/05-graceful-degradation/start -run '^TestBrowseReturnsFullResultWhenRecommendationArrives$'",
+      "expectedExit": 0
+    },
+    "failure": {
+      "run": "GOWORK=off go test -count=1 -tags=failure ./episodes/05-graceful-degradation/start -run '^TestBrowsePreservesCatalogAtSelectionBoundary$'",
+      "expectedExit": 1,
+      "expectedOutput": "property violated: browse result = error recommendation unavailable, want reduced success with current catalog"
+    },
+    "solution": {
+      "run": "GOWORK=off go test -count=1 -tags=failure ./episodes/05-graceful-degradation/solution -run '^TestBrowsePreservesCatalogAtSelectionBoundary$'",
+      "expectedExit": 0
+    },
+    "boundary": {
+      "run": "GOWORK=off go test -count=1 ./episodes/05-graceful-degradation/solution -run '^TestBoundaryRecommendationCannotReplaceMissingCatalog$'",
+      "expectedExit": 0
+    },
+    "verify": {
+      "run": "./scripts/verify-episode-05.sh",
+      "expectedExit": 0
+    }
+  }
+}

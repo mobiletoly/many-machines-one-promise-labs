@@ -1,0 +1,101 @@
+{
+  "cases": [
+    {
+      "id": "P-95",
+      "operations": [
+        {"id": "C-95", "role": "capture", "authority": "payment-provider"},
+        {"id": "R-95", "role": "reservation", "authority": "inventory-system"},
+        {"id": "F-95", "role": "return_primary", "authority": "payment-provider"},
+        {"id": "G-95", "role": "return_alternative", "authority": "finance-desk"}
+      ],
+      "cuts": [
+        {"id": "K1", "through_sequence": 3},
+        {"id": "K2", "through_sequence": 4},
+        {"id": "K3", "through_sequence": 6},
+        {"id": "K4", "through_sequence": 8},
+        {"id": "K5", "through_sequence": 9}
+      ]
+    },
+    {
+      "id": "P-96",
+      "operations": [
+        {"id": "C-96", "role": "capture", "authority": "payment-provider"},
+        {"id": "R-96", "role": "reservation", "authority": "inventory-system"},
+        {"id": "F-96", "role": "return_primary", "authority": "payment-provider"},
+        {"id": "G-96", "role": "return_alternative", "authority": "finance-desk"}
+      ],
+      "cuts": [
+        {"id": "U1", "through_sequence": 8}
+      ]
+    },
+    {
+      "id": "P-97",
+      "operations": [
+        {"id": "C-97", "role": "capture", "authority": "payment-provider"},
+        {"id": "R-97", "role": "reservation", "authority": "inventory-system"},
+        {"id": "F-97", "role": "return_primary", "authority": "payment-provider"},
+        {"id": "G-97", "role": "return_alternative", "authority": "finance-desk"}
+      ],
+      "cuts": [
+        {"id": "CF1", "through_sequence": 4}
+      ]
+    }
+  ],
+  "architectures": [
+    {
+      "id": "independent-effects",
+      "single_atomic_authority": false,
+      "preterminal_common_decision": false,
+      "always_abort": false,
+      "healthy_execution_all_participants_capable": true,
+      "participants": [
+        {"role": "capture", "authority": "payment-provider", "can_prepare": false},
+        {"role": "reservation", "authority": "inventory-system", "can_prepare": false}
+      ],
+      "reachable_terminal_outcomes": [
+        {"id": "MIX-1", "capture": "accepted", "reservation": "rejected"}
+      ]
+    },
+    {
+      "id": "single-commerce-authority",
+      "single_atomic_authority": true,
+      "preterminal_common_decision": true,
+      "always_abort": false,
+      "healthy_execution_all_participants_capable": true,
+      "participants": [
+        {"role": "capture", "authority": "commerce-database", "can_prepare": true},
+        {"role": "reservation", "authority": "commerce-database", "can_prepare": true}
+      ],
+      "reachable_terminal_outcomes": [
+        {"id": "LOCAL-COMMIT", "capture": "accepted", "reservation": "accepted"},
+        {"id": "LOCAL-ABORT", "capture": "rejected", "reservation": "rejected"}
+      ]
+    },
+    {
+      "id": "coordinator-over-immediate-capture",
+      "single_atomic_authority": false,
+      "preterminal_common_decision": true,
+      "always_abort": false,
+      "healthy_execution_all_participants_capable": true,
+      "participants": [
+        {"role": "capture", "authority": "immediate-payment-api", "can_prepare": false},
+        {"role": "reservation", "authority": "inventory-resource", "can_prepare": true}
+      ],
+      "reachable_terminal_outcomes": []
+    },
+    {
+      "id": "always-abort",
+      "single_atomic_authority": false,
+      "preterminal_common_decision": true,
+      "always_abort": true,
+      "healthy_execution_all_participants_capable": true,
+      "participants": [
+        {"role": "capture", "authority": "payment-resource", "can_prepare": true},
+        {"role": "reservation", "authority": "inventory-resource", "can_prepare": true}
+      ],
+      "reachable_terminal_outcomes": [
+        {"id": "ABORT-ONLY", "capture": "rejected", "reservation": "rejected"}
+      ]
+    }
+  ]
+}

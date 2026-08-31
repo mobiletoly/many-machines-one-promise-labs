@@ -1,0 +1,40 @@
+{
+  "number": 6,
+  "id": "fencing-token",
+  "title": "The Publication Desk Has Seen 18",
+  "concepts": [
+    "fencing-token",
+    "authority-generation",
+    "effect-authority",
+    "atomic-operation",
+    "guarantee-boundary"
+  ],
+  "recommendedAfterChapter": 27,
+  "states": {
+    "start": "episodes/06-fencing-token/start",
+    "solution": "episodes/06-fencing-token/solution"
+  },
+  "commands": {
+    "happyPath": {
+      "run": "GOWORK=off go test -count=1 ./episodes/06-fencing-token/start -run '^TestCurrentHolderPublishesManifest77$'",
+      "expectedExit": 0
+    },
+    "failure": {
+      "run": "GOWORK=off go test -count=1 -tags=failure ./episodes/06-fencing-token/start -run '^TestStoreRejectsOlderGenerationAfterEstablishing18$'",
+      "expectedExit": 1,
+      "expectedOutput": "property violated: publish(manifest=M-77, holder=coordinator-a, generation=17) = accepted, want stale_generation"
+    },
+    "solution": {
+      "run": "GOWORK=off go test -count=1 -tags=failure ./episodes/06-fencing-token/solution -run '^TestStoreRejectsOlderGenerationAfterEstablishing18$'",
+      "expectedExit": 0
+    },
+    "boundary": {
+      "run": "GOWORK=off go test -count=1 ./episodes/06-fencing-token/solution -run '^TestBoundary'",
+      "expectedExit": 0
+    },
+    "verify": {
+      "run": "./scripts/verify-episode-06.sh",
+      "expectedExit": 0
+    }
+  }
+}

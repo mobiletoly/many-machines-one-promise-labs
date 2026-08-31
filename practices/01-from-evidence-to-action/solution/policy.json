@@ -1,0 +1,11 @@
+{
+  "name": "solution",
+  "initial_inference": "unknown",
+  "ordinary_while_suppressed": "reject",
+  "evidence_action": "representative_shipping_quote",
+  "max_evidence_calls_per_round": 1,
+  "restore_on": "shipping_quote_within_deadline",
+  "post_restore_claim": "ordinary_admission_authorized",
+  "caller_scope": "checkout-p",
+  "operation_scope": "shipping_quote"
+}

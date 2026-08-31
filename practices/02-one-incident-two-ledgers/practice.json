@@ -1,0 +1,47 @@
+{
+  "number": 2,
+  "id": "one-incident-two-ledgers",
+  "type": "practice",
+  "title": "One Incident, Two Ledgers",
+  "capabilities": [
+    "logical-operation-and-attempt-accounting",
+    "retry-amplification",
+    "backpressure",
+    "resource-isolation",
+    "service-objective-evaluation",
+    "guarantee-boundary"
+  ],
+  "recommendedAfterChapter": 37,
+  "artifacts": {
+    "contract": "practices/02-one-incident-two-ledgers/contract.json",
+    "evidence": "practices/02-one-incident-two-ledgers/evidence.jsonl",
+    "starterAnalysis": "practices/02-one-incident-two-ledgers/starter/analysis.json",
+    "solutionAnalysis": "practices/02-one-incident-two-ledgers/solution/analysis.json"
+  },
+  "commands": {
+    "failure": {
+      "run": "GOWORK=off go run ./practices/02-one-incident-two-ledgers/cmd/replay -analysis practices/02-one-incident-two-ledgers/starter/analysis.json",
+      "expectedExit": 1,
+      "expectedOutput": "property violated: analysis does not match the declared incident"
+    },
+    "verifyReader": {
+      "run": "./scripts/verify-practice-02.sh /tmp/practice-02-analysis.json",
+      "expectedExit": 0,
+      "expectedOutput": "Practice 02 reader analysis satisfies the declared contract."
+    },
+    "solution": {
+      "run": "GOWORK=off go run ./practices/02-one-incident-two-ledgers/cmd/replay -analysis practices/02-one-incident-two-ledgers/solution/analysis.json",
+      "expectedExit": 0,
+      "expectedOutput": "Practice 02 analysis satisfies the declared contract."
+    },
+    "boundary": {
+      "run": "GOWORK=off go test -count=1 ./practices/02-one-incident-two-ledgers/replay -run '^TestBoundary'",
+      "expectedExit": 0
+    },
+    "check": {
+      "run": "./scripts/check-practice-02.sh",
+      "expectedExit": 0,
+      "expectedOutput": "Practice 02 repository check passed."
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "number": 1,
+  "id": "from-evidence-to-action",
+  "type": "practice",
+  "title": "From Evidence to Action",
+  "capabilities": [
+    "observability",
+    "failure-detection",
+    "consumer-policy",
+    "dependency-call-admission-feedback",
+    "guarantee-boundary"
+  ],
+  "recommendedAfterChapter": 29,
+  "artifacts": {
+    "evidence": "practices/01-from-evidence-to-action/evidence.jsonl",
+    "starterPolicy": "practices/01-from-evidence-to-action/starter/policy.json",
+    "solutionPolicy": "practices/01-from-evidence-to-action/solution/policy.json"
+  },
+  "commands": {
+    "failure": {
+      "run": "GOWORK=off go run ./practices/01-from-evidence-to-action/cmd/replay -policy practices/01-from-evidence-to-action/starter/policy.json",
+      "expectedExit": 1,
+      "expectedOutput": "property violated: initial evidence also fits a capable X with impaired evidence paths; it does not establish crashed"
+    },
+    "verifyReader": {
+      "run": "./scripts/verify-practice-01.sh /tmp/practice-01-policy.json",
+      "expectedExit": 0,
+      "expectedOutput": "Practice 01 reader policy satisfies the declared contract."
+    },
+    "solution": {
+      "run": "GOWORK=off go run ./practices/01-from-evidence-to-action/cmd/replay -policy practices/01-from-evidence-to-action/solution/policy.json",
+      "expectedExit": 0,
+      "expectedOutput": "Practice 01 policy satisfies the declared contract."
+    },
+    "boundary": {
+      "run": "GOWORK=off go test -count=1 ./practices/01-from-evidence-to-action/replay -run '^TestBoundary'",
+      "expectedExit": 0
+    },
+    "check": {
+      "run": "./scripts/check-practice-01.sh",
+      "expectedExit": 0,
+      "expectedOutput": "Practice 01 repository check passed."
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{"id":"E1","at":"2026-08-30T12:00:40Z","kind":"process_started","state_id":"R-A","build_id":"V2","path_id":"P-CAMPAIGN"}
+{"id":"E2","at":"2026-08-30T12:00:50Z","kind":"health_passed","state_id":"R-A","build_id":"V2","path_id":"P-CAMPAIGN"}
+{"id":"E3","at":"2026-08-30T12:01:00Z","kind":"operator_declared_recovered","state_id":"R-A","build_id":"V2","path_id":"P-CAMPAIGN"}
+{"id":"E4","at":"2026-08-30T12:02:00Z","kind":"serving_configuration_established","state_id":"R-A","build_id":"V2","path_id":"P-CAMPAIGN"}
+{"id":"E5","at":"2026-08-30T12:03:00Z","kind":"serving_configuration_established","state_id":"R-B","build_id":"V2","path_id":"P-CAMPAIGN"}
+{"id":"E6","at":"2026-08-30T12:03:40Z","kind":"serving_configuration_established","state_id":"R-C","build_id":"V1","path_id":"P-CAMPAIGN"}
+{"id":"E7","at":"2026-08-30T12:04:00Z","kind":"serving_configuration_established","state_id":"R-C","build_id":"V2","path_id":"P-DIAGNOSTIC"}
+{"id":"E8","at":"2026-08-30T12:04:20Z","kind":"serving_configuration_established","state_id":"R-C","build_id":"V2","path_id":"P-CAMPAIGN"}
+{"id":"E9","at":"2026-08-30T12:06:00Z","kind":"request_succeeded","state_id":"R-C","build_id":"V2","path_id":"P-CAMPAIGN","result_meaning":"suppressed","audience":"customer"}

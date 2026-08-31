@@ -1,0 +1,47 @@
+{
+  "number": 3,
+  "id": "g42-partition",
+  "title": "G-42 Splits and Reunites",
+  "concepts": [
+    "network-partition",
+    "operation-availability",
+    "reconciliation",
+    "replica",
+    "convergence",
+    "business-invariant"
+  ],
+  "recommendedAfterChapter": 14,
+  "basedOn": "02-unknown-create-outcome",
+  "retainedProperties": [
+    "logical-operation-identity",
+    "matching-retry-idempotency",
+    "conflicting-reuse-rejection"
+  ],
+  "states": {
+    "start": "episodes/03-g42-partition/start",
+    "solution": "episodes/03-g42-partition/solution"
+  },
+  "commands": {
+    "happyPath": {
+      "run": "GOWORK=off go test -count=1 ./episodes/03-g42-partition/start -run '^TestOneReplicaRedeemsLocally$'",
+      "expectedExit": 0
+    },
+    "failure": {
+      "run": "GOWORK=off go test -count=1 -tags=failure ./episodes/03-g42-partition/start -run '^TestReplicasPreserveAcceptedHistoryAfterPartition$'",
+      "expectedExit": 1,
+      "expectedOutput": "property violated: replica A accounts for [RA-80], want [RA-80 RB-80]"
+    },
+    "solution": {
+      "run": "GOWORK=off go test -count=1 -tags=failure ./episodes/03-g42-partition/solution -run '^TestReplicasPreserveAcceptedHistoryAfterPartition$'",
+      "expectedExit": 0
+    },
+    "boundary": {
+      "run": "GOWORK=off go test -count=1 ./episodes/03-g42-partition/solution -run '^TestBoundaryConvergedHistoryStillViolatesFunding$'",
+      "expectedExit": 0
+    },
+    "verify": {
+      "run": "./scripts/verify-episode-03.sh",
+      "expectedExit": 0
+    }
+  }
+}
