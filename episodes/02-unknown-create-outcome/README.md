@@ -66,5 +66,3 @@ Run the complete episode verifier:
 ```sh
 ./scripts/verify-episode-02.sh
 ```
-
-The companion chapter has not been published.

@@ -1,7 +1,8 @@
 # Many Machines, One Promise Labs
 
-Runnable Go labs for *One Promise Under Test*, the companion to *Many
-Machines, One Promise*.
+Runnable Go labs for [*One Promise Under
+Test*](https://goquick-dev.app4.workers.dev/books/one-promise-under-test/), the
+companion to *Many Machines, One Promise*.
 
 Each lab starts with a scoped system property. You predict a legal execution,
 run it, inspect the failure, apply the correction, and test the boundary of the
@@ -18,12 +19,16 @@ resulting guarantee.
 ## Get the code
 
 ```sh
-git clone https://github.com/mobiletoly/many-machines-one-promise-labs.git
+git clone --depth 1 --branch one-promise-under-test-preview-2 \
+  https://github.com/mobiletoly/many-machines-one-promise-labs.git
 cd many-machines-one-promise-labs
+go version
 ```
 
-The companion links each published unit to an immutable release. Check out the
-tag named by the unit before running its commands.
+Run the commands in the companion as you reach them. Run every command from the
+repository root unless the unit names another working directory. A controlled
+failure command exits nonzero when it reproduces the property violation named
+by the chapter.
 
 ## Episodes
 
