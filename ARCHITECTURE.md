@@ -69,7 +69,10 @@ many-machines-one-promise-labs/
 │   ├── 03-g42-partition/
 │   ├── 04-stale-completion/
 │   ├── 05-graceful-degradation/
-│   └── 06-fencing-token/
+│   ├── 06-fencing-token/
+│   ├── 07-partitioned-authority/
+│   ├── 08-exclusive-authority-transfer/
+│   └── 09-time-bounded-authority/
 ├── capstones/
 │   └── 01-two-servers-one-operation/
 ├── practices/
@@ -77,7 +80,8 @@ many-machines-one-promise-labs/
 │   ├── 02-one-incident-two-ledgers/
 │   ├── 03-which-histories-are-legal/
 │   ├── 04-when-is-recovery-complete/
-│   └── 05-what-may-the-product-claim/
+│   ├── 05-what-may-the-product-claim/
+│   └── 06-atomic-commit-adjudication/
 └── scripts/
 ```
 
@@ -181,7 +185,8 @@ the incident, not choose the conclusion for the reader.
 
 ## Infrastructure
 
-The six Episodes use only the infrastructure required by their failures:
+The eight assembled Episodes and the retained Episode 09 workshop artifact use
+only the infrastructure required by their failures:
 
 | Unit | Main boundary |
 |---|---|
@@ -191,9 +196,84 @@ The six Episodes use only the infrastructure required by their failures:
 | Episode 04 | responsibility transfer and a paused former owner |
 | Episode 05 | a controlled result-selection boundary |
 | Episode 06 | separate authority and effect-store generations |
+| Episode 07 | two local authority stores and finite-right accounting |
+| Episode 08 | two local authority stores and controlled grant delivery |
+| Episode 09 rejected workshop artifact | one effect authority and a controlled local clock |
 
 Integration Capstone 01 adds two long-lived HTTP processes and PostgreSQL.
-Practices use local evidence files and replay programs.
+Practices 01-06 use local evidence files and replay programs.
+
+## Post-v1 authority candidates
+
+On 2026-09-01, the human author admitted two linked post-v1 Episode candidates
+for Book 1 Chapters 11 and 12. Episode 07 covers partitioned local authority
+over one finite invariant. Episode 08 covers transfer of one exclusive right.
+The workshop keeps them separate because allocation and transfer require
+different failure histories, corrections, oracles, and boundaries.
+
+Episode 07 starts with two healthy booth stores that treat the same observed
+remaining count as local permission. The correction allocates non-overlapping
+rights before communication loss and consumes one right with each retained
+confirmation. Its safety oracle counts confirmed sales, outstanding spendable
+rights, and reserve. A separate progress assertion requires both booths to use
+their declared local allocations. The boundary strands usable rights at the
+booth without current demand.
+
+Episode 07 completed its corrected local loop and received a human freeze. It
+remains outside the v1 release.
+
+Episode 08 begins with Booth B owning `R-100` and Booth A owning no local right.
+The start state emits an actionable `X-100` grant before Booth B relinquishes
+the right. The correction relinquishes and retains the grant in one source
+transition before delivery. The shared property test requires destination
+progress and rejects two distinct confirmations backed by `R-100`. The boundary
+loses the grant after relinquishment and exposes a safe authority gap.
+
+Episode 08 adds no live-process requirement, crash recovery, forged-message
+defense, successive transfer, replication, merge, clock, lease, fencing,
+quorum, or consensus mechanism.
+
+Independent paired review found that the start source supplied the failure
+answer before prediction and that the complete verifier did not validate
+`episode.json`. The human author accepted both findings. The integrated
+correction removes the evaluative source comment and validates the manifest's
+identity, paths, command strings, exit codes, and failure output before the
+teaching sequence runs.
+
+The human author confirmed the Episode 08 freeze on 2026-09-01 for
+reader-facing Companion commit
+`ca4240c275fae6211513a1543f6b962120e43588` and Labs candidate commit
+`c274d261087e8f8de21db2860f92035112327079`. The freeze ends this local review
+loop. Episode 08 remains outside the v1 release and has no release tag, push,
+or publication authority.
+
+The human author admitted Episode 09, `The Desk Read 110`, after a focused
+lease workshop on 2026-09-01. Publication desk S establishes L-88 for A and
+M-88 on S's manual monotonic clock. The shared property test accepts one
+pre-expiry publication while the issuer remains unavailable, then advances S
+from tick 109 to tick 110 at the controlled acceptance boundary. The start
+state uses an earlier eligibility check and accepts the late effect. The
+solution reads S's clock and accepts or rejects the effect in one desk
+transition. Boundary tests reject at the exact expiry and preserve an effect
+accepted before expiry.
+
+Episode 09 adds no live process, synchronized clock, real-time duration claim,
+renewal, recovery, replacement holder, fencing generation, transfer, failure
+detection, retry, or idempotency contract. Independent review and a focused
+substitution probe found no reader decision beyond Book 1's complete argument.
+The human author killed the candidate. Its frozen code remains retained
+workshop evidence and does not belong to the complete public cut.
+
+## Complete-public-cut candidate
+
+On 2026-09-02, the human author admitted Episodes 07-08 and Practice 06 to the
+complete-public-cut assembly. The snapshot contains Episodes 01-08,
+Integration Capstone 01, and Practices 01-06.
+
+The Companion manifest records the exact Labs commit after this documentation
+integration and uses `tag: pending` during assembly review. An immutable tag at
+the same commit, push, and publication remain separate release gates. Episode
+09 stays outside the assembly.
 
 ## Releases
 

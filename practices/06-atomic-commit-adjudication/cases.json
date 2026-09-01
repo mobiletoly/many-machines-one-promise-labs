@@ -1,0 +1,39 @@
+{
+  "cases": [
+    {
+      "id": "T-201",
+      "cut_id": "C-201",
+      "through_order": 6,
+      "target_participant": "I",
+      "required_participants": ["M", "I"]
+    },
+    {
+      "id": "T-203",
+      "cut_id": "C-203",
+      "through_order": 6,
+      "target_participant": "I",
+      "required_participants": ["M", "I"]
+    },
+    {
+      "id": "T-204",
+      "cut_id": "C-204",
+      "through_order": 6,
+      "target_participant": "I",
+      "required_participants": ["M", "I"]
+    },
+    {
+      "id": "T-205",
+      "cut_id": "C-205",
+      "through_order": 7,
+      "target_participant": "I",
+      "required_participants": ["M", "I", "J"]
+    },
+    {
+      "id": "T-206",
+      "cut_id": "C-206",
+      "through_order": 7,
+      "target_participant": "I",
+      "required_participants": ["M", "I"]
+    }
+  ]
+}

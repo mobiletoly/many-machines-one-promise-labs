@@ -1,0 +1,46 @@
+{
+  "number": 7,
+  "id": "partitioned-authority",
+  "title": "Both Booths See Four Left",
+  "concepts": [
+    "global-invariant",
+    "partitioned-authority",
+    "local-decision-authority",
+    "atomic-operation",
+    "guarantee-boundary"
+  ],
+  "recommendedAfterChapter": 11,
+  "basedOn": "03-g42-partition",
+  "retainedProperties": [
+    "logical-operation-identity",
+    "matching-retry-idempotency",
+    "conflicting-reuse-rejection"
+  ],
+  "states": {
+    "start": "episodes/07-partitioned-authority/start",
+    "solution": "episodes/07-partitioned-authority/solution"
+  },
+  "commands": {
+    "happyPath": {
+      "run": "GOWORK=off go test -count=1 ./episodes/07-partitioned-authority/start -run '^TestOneBoothConfirmsFromLocalState$'",
+      "expectedExit": 0
+    },
+    "failure": {
+      "run": "GOWORK=off go test -count=1 -tags=failure ./episodes/07-partitioned-authority/start -run '^TestLocalAuthorityPreservesCapacityDuringPartition$'",
+      "expectedExit": 1,
+      "expectedOutput": "property violated: event E-8 exposure = confirmed 9 + outstanding 2 + reserve 4 = 15, capacity 7"
+    },
+    "solution": {
+      "run": "GOWORK=off go test -count=1 -tags=failure ./episodes/07-partitioned-authority/solution -run '^TestLocalAuthorityPreservesCapacityDuringPartition$'",
+      "expectedExit": 0
+    },
+    "boundary": {
+      "run": "GOWORK=off go test -count=1 ./episodes/07-partitioned-authority/solution -run '^TestBoundarySafeAllocationCanStrandCapacity$'",
+      "expectedExit": 0
+    },
+    "verify": {
+      "run": "./scripts/verify-episode-07.sh",
+      "expectedExit": 0
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "atomic-commit-recovery-v1",
+  "evidence_authority": {
+    "participant_logs_complete_through_named_cut": true,
+    "participant_events_authoritative": true,
+    "decision_records_authoritative": true,
+    "complete_decision_reads_establish_absence_through_cut": true,
+    "unavailable_decision_reads_establish_absence": false,
+    "coordinator_notes_are_decision_evidence": false
+  },
+  "prepared_statuses": [
+    "VALID",
+    "INVALID",
+    "NOT_PREPARED"
+  ],
+  "decision_statuses": [
+    "COMMIT",
+    "ABORT",
+    "NONE_THROUGH_CUT",
+    "UNKNOWN"
+  ],
+  "decision_contract_statuses": [
+    "VALID",
+    "BREACH"
+  ],
+  "dispositions": [
+    "APPLY_COMMIT",
+    "APPLY_ABORT",
+    "REMAIN_PREPARED",
+    "REPORT_PROTOCOL_BREACH"
+  ]
+}

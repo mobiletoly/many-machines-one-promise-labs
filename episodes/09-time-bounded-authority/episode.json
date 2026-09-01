@@ -1,0 +1,41 @@
+{
+  "number": 9,
+  "id": "time-bounded-authority",
+  "title": "The Desk Read 110",
+  "concepts": [
+    "lease",
+    "time-bounded-authority",
+    "effect-authority",
+    "monotonic-clock",
+    "atomic-operation",
+    "guarantee-boundary"
+  ],
+  "recommendedAfterChapter": 28,
+  "states": {
+    "start": "episodes/09-time-bounded-authority/start",
+    "solution": "episodes/09-time-bounded-authority/solution"
+  },
+  "commands": {
+    "happyPath": {
+      "run": "GOWORK=off go test -count=1 ./episodes/09-time-bounded-authority/start -run '^TestEstablishedLeaseSupportsPublicationWithoutIssuer$'",
+      "expectedExit": 0
+    },
+    "failure": {
+      "run": "GOWORK=off go test -count=1 -tags=failure ./episodes/09-time-bounded-authority/start -run '^TestLeaseExpiryIsEnforcedAtEffectAcceptance$'",
+      "expectedExit": 1,
+      "expectedOutput": "lease expiry violated: publish(operation=P-after, lease=L-88) decided at S time 110 = accepted, want lease_expired"
+    },
+    "solution": {
+      "run": "GOWORK=off go test -count=1 -tags=failure ./episodes/09-time-bounded-authority/solution -run '^TestLeaseExpiryIsEnforcedAtEffectAcceptance$'",
+      "expectedExit": 0
+    },
+    "boundary": {
+      "run": "GOWORK=off go test -count=1 ./episodes/09-time-bounded-authority/solution -run '^TestBoundary'",
+      "expectedExit": 0
+    },
+    "verify": {
+      "run": "./scripts/verify-episode-09.sh",
+      "expectedExit": 0
+    }
+  }
+}

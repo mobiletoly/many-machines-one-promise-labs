@@ -1,0 +1,9 @@
+{"id":"D201-REC","case_id":"T-201","cut_id":"C-201","source":"D","order":3,"kind":"decision_recorded","value":"COMMIT","preparation_evidence_ids":["P201-M-PREP","P201-I-PREP"]}
+{"id":"D201-READ","case_id":"T-201","cut_id":"C-201","source":"D","order":5,"kind":"decision_read_complete","record_id":"D201-REC"}
+{"id":"K203-NOTE","case_id":"T-203","cut_id":"C-203","source":"K","order":3,"kind":"coordinator_note","value":"COMMIT"}
+{"id":"D203-READ","case_id":"T-203","cut_id":"C-203","source":"D","order":4,"kind":"decision_read_unavailable"}
+{"id":"D204-READ","case_id":"T-204","cut_id":"C-204","source":"D","order":4,"kind":"decision_read_complete"}
+{"id":"D205-REC","case_id":"T-205","cut_id":"C-205","source":"D","order":4,"kind":"decision_recorded","value":"COMMIT","preparation_evidence_ids":["P205-M-PREP","P205-I-PREP"]}
+{"id":"D205-READ","case_id":"T-205","cut_id":"C-205","source":"D","order":5,"kind":"decision_read_complete","record_id":"D205-REC"}
+{"id":"D206-REC","case_id":"T-206","cut_id":"C-206","source":"D","order":4,"kind":"decision_recorded","value":"COMMIT","preparation_evidence_ids":["P206-M-PREP","P206-I-PREP"]}
+{"id":"D206-READ","case_id":"T-206","cut_id":"C-206","source":"D","order":5,"kind":"decision_read_complete","record_id":"D206-REC"}

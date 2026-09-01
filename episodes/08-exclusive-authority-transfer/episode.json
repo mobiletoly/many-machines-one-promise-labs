@@ -1,0 +1,47 @@
+{
+  "number": 8,
+  "id": "exclusive-authority-transfer",
+  "title": "Booth A Has It, Booth B Still Does",
+  "concepts": [
+    "exclusive-authority",
+    "authority-transfer",
+    "relinquishment-before-grant",
+    "atomic-operation",
+    "guarantee-boundary"
+  ],
+  "recommendedAfterChapter": 12,
+  "basedOn": "07-partitioned-authority",
+  "retainedProperties": [
+    "global-invariant",
+    "logical-operation-identity",
+    "matching-retry-idempotency",
+    "conflicting-reuse-rejection"
+  ],
+  "states": {
+    "start": "episodes/08-exclusive-authority-transfer/start",
+    "solution": "episodes/08-exclusive-authority-transfer/solution"
+  },
+  "commands": {
+    "happyPath": {
+      "run": "GOWORK=off go test -count=1 ./episodes/08-exclusive-authority-transfer/start -run '^TestGrantFirstWorkflowCanReachOneFinalHolder$'",
+      "expectedExit": 0
+    },
+    "failure": {
+      "run": "GOWORK=off go test -count=1 -tags=failure ./episodes/08-exclusive-authority-transfer/start -run '^TestExclusiveAuthoritySurvivesGrantDelivery$'",
+      "expectedExit": 1,
+      "expectedOutput": "exclusive authority violated: right R-100 confirmed by A-301 at booth-a and B-401 at booth-b during X-100"
+    },
+    "solution": {
+      "run": "GOWORK=off go test -count=1 -tags=failure ./episodes/08-exclusive-authority-transfer/solution -run '^TestExclusiveAuthoritySurvivesGrantDelivery$'",
+      "expectedExit": 0
+    },
+    "boundary": {
+      "run": "GOWORK=off go test -count=1 ./episodes/08-exclusive-authority-transfer/solution -run '^TestBoundaryLostGrantLeavesAuthorityGap$'",
+      "expectedExit": 0
+    },
+    "verify": {
+      "run": "./scripts/verify-episode-08.sh",
+      "expectedExit": 0
+    }
+  }
+}

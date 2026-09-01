@@ -1,0 +1,48 @@
+{
+  "number": 6,
+  "id": "atomic-commit-adjudication",
+  "type": "practice",
+  "title": "Can This Participant Finish?",
+  "capabilities": [
+    "atomic-commit-evidence-adjudication",
+    "prepared-capability-review",
+    "decision-authority-review",
+    "recovery-disposition-certification",
+    "guarantee-boundary"
+  ],
+  "recommendedAfterChapter": 24,
+  "artifacts": {
+    "contract": "practices/06-atomic-commit-adjudication/contract.json",
+    "cases": "practices/06-atomic-commit-adjudication/cases.json",
+    "participantEvidence": "practices/06-atomic-commit-adjudication/participant-evidence.jsonl",
+    "decisionEvidence": "practices/06-atomic-commit-adjudication/decision-evidence.jsonl",
+    "starterReview": "practices/06-atomic-commit-adjudication/starter/adjudication.json",
+    "solutionReview": "practices/06-atomic-commit-adjudication/solution/adjudication.json"
+  },
+  "commands": {
+    "failure": {
+      "run": "GOWORK=off go run ./practices/06-atomic-commit-adjudication/cmd/replay -review practices/06-atomic-commit-adjudication/starter/adjudication.json",
+      "expectedExit": 1,
+      "expectedOutput": "property violated: adjudication does not certify the supplied evidence cuts"
+    },
+    "verifyReader": {
+      "run": "./scripts/verify-practice-06.sh /tmp/practice-06-adjudication.json",
+      "expectedExit": 0,
+      "expectedOutput": "Practice 06 reader adjudication satisfies the declared recovery contract."
+    },
+    "solution": {
+      "run": "GOWORK=off go run ./practices/06-atomic-commit-adjudication/cmd/replay -review practices/06-atomic-commit-adjudication/solution/adjudication.json",
+      "expectedExit": 0,
+      "expectedOutput": "Practice 06 adjudication satisfies the declared atomic-commit evidence."
+    },
+    "boundary": {
+      "run": "GOWORK=off go test -count=1 ./practices/06-atomic-commit-adjudication/replay -run '^TestBoundary'",
+      "expectedExit": 0
+    },
+    "check": {
+      "run": "./scripts/check-practice-06.sh",
+      "expectedExit": 0,
+      "expectedOutput": "Practice 06 repository check passed."
+    }
+  }
+}

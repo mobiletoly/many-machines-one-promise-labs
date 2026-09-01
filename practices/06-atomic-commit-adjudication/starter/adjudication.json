@@ -1,0 +1,55 @@
+{
+  "name": "operator-review",
+  "case_reviews": [
+    {
+      "case_id": "T-201",
+      "target_participant": "I",
+      "required_participants": ["M", "I"],
+      "prepared_status": {"value": "VALID", "evidence_ids": ["P201-I-PREP", "P201-I-CUT"]},
+      "decision_status": {"value": "COMMIT", "evidence_ids": ["D201-REC", "D201-READ"]},
+      "decision_contract_status": {"value": "VALID", "evidence_ids": ["D201-REC", "P201-M-PREP", "P201-I-PREP"]},
+      "disposition": "REMAIN_PREPARED",
+      "supporting_evidence_ids": ["D201-READ", "D201-REC", "P201-I-CUT", "P201-I-PREP", "P201-M-PREP"]
+    },
+    {
+      "case_id": "T-203",
+      "target_participant": "I",
+      "required_participants": ["M", "I"],
+      "prepared_status": {"value": "VALID", "evidence_ids": ["P203-I-PREP", "P203-I-CUT"]},
+      "decision_status": {"value": "COMMIT", "evidence_ids": ["K203-NOTE"]},
+      "decision_contract_status": {"value": "VALID", "evidence_ids": ["K203-NOTE"]},
+      "disposition": "APPLY_COMMIT",
+      "supporting_evidence_ids": ["K203-NOTE", "P203-I-CUT", "P203-I-PREP"]
+    },
+    {
+      "case_id": "T-204",
+      "target_participant": "I",
+      "required_participants": ["M", "I"],
+      "prepared_status": {"value": "VALID", "evidence_ids": ["P204-I-PREP", "P204-I-CUT"]},
+      "decision_status": {"value": "ABORT", "evidence_ids": ["D204-READ"]},
+      "decision_contract_status": {"value": "VALID", "evidence_ids": ["D204-READ"]},
+      "disposition": "APPLY_ABORT",
+      "supporting_evidence_ids": ["D204-READ", "P204-I-CUT", "P204-I-PREP"]
+    },
+    {
+      "case_id": "T-205",
+      "target_participant": "I",
+      "required_participants": ["M", "I", "J"],
+      "prepared_status": {"value": "VALID", "evidence_ids": ["P205-I-PREP", "P205-I-CUT"]},
+      "decision_status": {"value": "COMMIT", "evidence_ids": ["D205-REC", "D205-READ"]},
+      "decision_contract_status": {"value": "VALID", "evidence_ids": ["D205-REC", "P205-M-PREP", "P205-I-PREP"]},
+      "disposition": "APPLY_COMMIT",
+      "supporting_evidence_ids": ["D205-READ", "D205-REC", "P205-I-CUT", "P205-I-PREP", "P205-M-PREP"]
+    },
+    {
+      "case_id": "T-206",
+      "target_participant": "I",
+      "required_participants": ["M", "I"],
+      "prepared_status": {"value": "VALID", "evidence_ids": ["P206-I-PREP", "P206-I-CUT"]},
+      "decision_status": {"value": "COMMIT", "evidence_ids": ["D206-REC", "D206-READ"]},
+      "decision_contract_status": {"value": "VALID", "evidence_ids": ["D206-REC", "P206-M-PREP", "P206-I-PREP"]},
+      "disposition": "APPLY_COMMIT",
+      "supporting_evidence_ids": ["D206-READ", "D206-REC", "P206-I-CUT", "P206-I-PREP", "P206-M-PREP"]
+    }
+  ]
+}

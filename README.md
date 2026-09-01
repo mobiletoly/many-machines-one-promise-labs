@@ -10,8 +10,10 @@ resulting guarantee.
 
 ## Requirements
 
-- Go 1.23 or newer;
-- macOS or Linux;
+- Go 1.23 or newer with cgo enabled;
+- a macOS or Linux target supported by the [Go race
+  detector](https://go.dev/doc/articles/race_detector#Requirements);
+- an installed C compiler on Linux;
 - a POSIX shell;
 - Docker with Docker Compose, or access to PostgreSQL, for Integration
   Capstone 01.
@@ -19,11 +21,13 @@ resulting guarantee.
 ## Get the code
 
 ```sh
-git clone --depth 1 --branch one-promise-under-test-preview-2 \
-  https://github.com/mobiletoly/many-machines-one-promise-labs.git
+git clone https://github.com/mobiletoly/many-machines-one-promise-labs.git
 cd many-machines-one-promise-labs
 go version
 ```
+
+The published Companion names the immutable Labs tag and commit for its
+release. Use that snapshot when following the book.
 
 Run the commands in the companion as you reach them. Run every command from the
 repository root unless the unit names another working directory. A controlled
@@ -40,6 +44,8 @@ by the chapter.
 | 04 | [Worker A Comes Back with Order 73](episodes/04-stale-completion/) | `./scripts/verify-episode-04.sh` |
 | 05 | [The List Without Advice](episodes/05-graceful-degradation/) | `./scripts/verify-episode-05.sh` |
 | 06 | [The Publication Desk Has Seen 18](episodes/06-fencing-token/) | `./scripts/verify-episode-06.sh` |
+| 07 | [Both Booths See Four Left](episodes/07-partitioned-authority/) | `./scripts/verify-episode-07.sh` |
+| 08 | [Booth A Has It, Booth B Still Does](episodes/08-exclusive-authority-transfer/) | `./scripts/verify-episode-08.sh` |
 
 Every Episode contains independently runnable `start` and `solution` states.
 Its README lists the happy path, controlled failure, corrected execution, and
@@ -64,6 +70,7 @@ through Docker Compose when `DATABASE_URL` is unset.
 | 03 | [Which Histories Are Legal?](practices/03-which-histories-are-legal/) | `./scripts/check-practice-03.sh` |
 | 04 | [When Is Recovery Complete?](practices/04-when-is-recovery-complete/) | `./scripts/check-practice-04.sh` |
 | 05 | [What May the Product Claim?](practices/05-what-may-the-product-claim/) | `./scripts/check-practice-05.sh` |
+| 06 | [Can This Participant Finish?](practices/06-atomic-commit-adjudication/) | `./scripts/check-practice-06.sh` |
 
 A Practice gives you evidence and a starter artifact. Its replay command
 rejects unsupported conclusions. After editing the artifact, pass its path to
@@ -87,12 +94,15 @@ Run each unit verifier for the full teaching checks:
 ./scripts/verify-episode-04.sh
 ./scripts/verify-episode-05.sh
 ./scripts/verify-episode-06.sh
+./scripts/verify-episode-07.sh
+./scripts/verify-episode-08.sh
 ./scripts/verify-capstone-01.sh
 ./scripts/check-practice-01.sh
 ./scripts/check-practice-02.sh
 ./scripts/check-practice-03.sh
 ./scripts/check-practice-04.sh
 ./scripts/check-practice-05.sh
+./scripts/check-practice-06.sh
 ```
 
 ## Repository layout
